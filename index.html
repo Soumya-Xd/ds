@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RedAlpha Tech Private Limited</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Add this in the head section of your HTML file to include Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <link rel="icon" href="redalpha.ico" type="image/x-icon">
+  <style>
+    /* Custom CSS */
+    body {
+      font-family: Arial, sans-serif;
+    }
+ /* Transparent Navbar */
+.navbar {
+  background-color: transparent; /* Set background to transparent */
+  padding: 1rem; /* Adjust the padding if needed */
+}
+
+.navbar-brand, .nav-link {
+  color: #e70c0c !important; /* Set text color to white */
+  font-weight: bold;
+}
+
+.navbar-brand img {
+  height: 50px; /* Adjust logo size as needed */
+}
+
+.navbar-brand:hover, .nav-link:hover {
+  color: #6b0505 !important; /* Hover color for navbar items */
+}
+
+
+      /* Night Mode navbar */
+      .navbar.night-mode {
+        background-color: #333 !important;  /* Dark background for the navbar */
+    }
+
+      /* Toggle button styles */
+      #nightModeToggle {
+          background-color:none;
+          
+          border: none;
+          padding: 7px;
+          cursor: pointer;
+          border-radius: 102px;
+          font-size: 25px;
+      }
+
+      #nightModeToggle:hover {
+          background-color:none;
+      }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Background Slideshow */
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      animation: slide 15s infinite;
+      transition: transform 0.5s ease;
+    }
+
+    /* Image Mask Overlay */
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color:none;
+      z-index: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    /* Hero Content */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-section {
+      position: relative;
+      height: 100vh;  /* Full viewport height */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      overflow: hidden; /* To prevent video from overflowing */
+    }
+    
+    .background-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);  /* Centers the video */
+      width: 100%;  /* Makes sure the video covers the section */
+      height: 100%;  /* Ensures it fills the section */
+      object-fit: cover;  /* Makes the video cover the container */
+    }
+    
+    h1 {
+      z-index: 1;  /* Ensure text appears above the video */
+    }
+
+    /* Circular Zoom Effect */
+    .hero-section.zoomed .hero-background {
+      transform: scale(1.3);
+      clip-path: circle(150px at center);
+      transition: transform 0.8s ease, clip-path 0.8s ease;
+    }
+
+    /* Remove Overlay on Zoom */
+    .hero-section.zoomed .hero-overlay {
+      opacity: 0;
+    }
+
+    /* Hero Content Animation */
+    .animated-text {
+      position: relative;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: transparent;
+      background: linear-gradient(90deg, #675ff5, #220143, #ac14f9, #42daf9, #fefefe, #002bff, #31012e, #f3f1f1, #2b0101);
+      background-size: 200%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: colorOverlay 5s linear infinite;
+      overflow: hidden;
+      mix-blend-mode: overlay;
+    }
+/* Scroll Down Button Styling */
+.scroll-down-btn {
+  position: absolute;
+  bottom: -250px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: white;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 25px;
+  border-radius: 56px;
+  transition: background-color 0.3s ease;
+}
+
+.scroll-down-btn:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Scroll Icon */
+.scroll-down-btn span {
+  display: block;
+  animation: bounce 1.5s infinite;
+}
+
+/* Bouncing Animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+    /* Mirror Effect */
+    .animated-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 100%; /* Position below the original text */
+      left: 0;
+      width: 100%;
+      color: inherit;
+      transform: scaleY(-1); /* Flip vertically for mirror effect */
+      opacity: 0.4;
+      background: inherit;
+      background-clip: text;
+      -webkit-background-clip: text;
+      mix-blend-mode: overlay;
+    }
+
+    /* Animation for Gradient Background */
+    @keyframes colorOverlay {
+      0% { background-position: 0%; }
+      100% { background-position: 200%; }
+    }
+
+    /* Background Slideshow Animation */
+    @keyframes slide {
+      0% { background-image: url('c1.jpg'); }
+  
+      53% { background-image: url('c2.jpg'); }
+      63% { background-image: url('c8.jpg'); }
+      76% { background-image: url('c3.jpg'); }
+
+      100% { background-image: url('c4.jpg'); }
+    }
+
+    /* Other Sections */
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      color: #FF4C4C;
+    }
+
+    .team-member img {
+      border-radius: 50%;
+    }
+
+    .contact-section {
+      background-color: #FF4C4C;
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .footer {
+      background-color: #FF4C4C;
+      color: #fff;
+      padding: 1rem 0;
+      text-align: center;
+    }
+    /* Styling for the logo */
+    .navbarlogo {
+      width: 100px;  /* Adjust the width as needed */
+      height: auto;  /* Maintain the aspect ratio */
+    }
+
+/* Services Section */
+#services {
+  background-color: #f8f9fa;
+  padding: 80px 0;
+  text-align: center;
+}
+
+/* Title Styling */
+.section-title {
+  font-size: 2.5rem;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+.services-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.service-card {
+  background-color: #d51212;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+/* Image Styling */
+.service-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Blue Overlay with Content Hidden Initially */
+.service-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 123, 255, 0.8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transform: scale(1.05);
+}
+
+/* Text Styling in Overlay */
+.service-overlay h4 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.service-overlay p {
+  font-size: 1rem;
+}
+
+/* Hover Effect: Zoom Image and Show Overlay */
+.service-card:hover .service-image img,
+.service-card:active .service-image img {
+  transform: scale(1.1);
+}
+.service-image h4 {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3));  /* Dark background for readability */
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 5px;
+  margin: 0;
+}
+.service-card:hover .service-overlay,
+.service-card:active .service-overlay {
+  opacity: 1;
+  transform: scale(1);
+}
+/* Container for the section */
+#services {
+  position: relative; /* Important for positioning the buttons inside the section */
+}
+
+/* Style for the button container */
+.button-container {
+  position: absolute;
+  bottom: 20px;  /* Position the buttons 20px from the bottom of the section */
+  right: 20px;   /* Position the buttons 20px from the right of the section */
+  display: flex;
+  gap: 10px;     /* Add space between the buttons */
+  z-index: 10;   /* Ensure buttons are on top of other elements */
+}
+
+/* Styling for the slider buttons and pause button */
+.slider-button,
+.pause-button {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border-radius: 5px;
+}
+
+
+
+/* Styling for the Pause button */
+#pauseButton {
+  background-color: #ff56222b;
+  font-weight: bold;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the slider buttons */
+.slider-button:hover,
+.pause-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: scale(1.05); /* Slight scale effect */
+}
+
+/* Hover effect for the Pause button */
+#pauseButton:hover {
+  background-color: #fa0505;
+}
+
+/* Accessibility: Focus styles */
+.slider-button:focus,
+.pause-button:focus {
+  outline: none;
+  box-shadow: 0 0 4px 2px rgba(65, 2, 255, 0.8);
+}
+
+
+/* Display Multiple Cards at a Time */
+@media (min-width: 768px) {
+  .service-card {
+    width: 300px; /* Increased card width for larger screens */
+    height: 400px; /* Adjusted card height for larger screens */
+  }
+  .services-container {
+    justify-content: space-around;
+  }
+}
+
+
+
+/* Smooth scroll for mobile */
+@media (max-width: 767px) {
+  .services-slider {
+    display: flex;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+  .service-card {
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    width: 100vw; /* Full width for mobile view */
+    margin: 0;
+  }
+}
+
+/*==================================================*/
+
+/* Add the mask to the section */
+#our-customers {
+  position: relative;
+  overflow: hidden; /* Ensure that any overflow is hidden */
+}
+
+/* Create the mask overlay */
+#our-customers::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:#971c274f; /* Semi-transparent black background */
+  z-index: 2; /* Place it above the images */
+}
+
+/* Ensure the images are behind the mask */
+#our-customers .container {
+  position: relative;
+  z-index: 1; /* Keep the content above the mask */
+}
+
+/* Optionally, add some hover effect or custom style for the images */
+#our-customers .col-6 img {
+  transition: transform 0.3s ease; /* Smooth zoom effect on hover */
+}
+
+#our-customers .col-6 img:hover {
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/*=====================================================*/
+/* About Us Section */
+#about-us {
+  background-color: #f9f9f9;
+  padding: 60px 0;
+}
+
+#about-us .section-title {
+  font-size: 36px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Red Horizontal Line */
+.red-line {
+  border: 0;
+  border-top: 4px solid red;
+  margin: 20px 0;
+}
+
+/* Team Member Styling */
+.team-member {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.team-member img {
+  border-radius: 50%;
+  margin-right: 20px;
+  width: 80px;
+  height: 80px;
+}
+
+.team-member p {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .team-member {
+    justify-content: start;
+  }
+
+  .team-member img {
+    margin-right: 10px;
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 28px;
+  }
+
+  .team-member img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Style for the zoomable image container */
+.image-container {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;  /* Circle shape for images */
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Zoomable images */
+.team-member-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.team-member-img:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Style the zoom overlay */
+.zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+
+.zoom-overlay.open {
+  transform: scale(1); /* Animate zoom opening */
+}
+
+.zoom-overlay img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  border-radius: 10px; /* Optional: rounding the zoomed image */
+}
+
+/* Triangle shape at the bottom of the zoomed image */
+.zoom-overlay .role-container {
+  position: absolute;
+  bottom: 20px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+.zoom-overlay .role-container:after {
+  content: "";
+  position: absolute;
+  bottom: -20px; /* Distance of triangle from text */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 20px solid #333; /* Triangle pointing down */
+}
+/*====================================*/
+/* Popup Modal - Background */
+.popup-modal {
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  z-index: 1000; /* Make sure it sits above other content */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Popup Modal - Content */
+.popup-content {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  width: 300px; /* Adjust the width of the modal */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Close Button (Cross) */
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+/* Close Button Hover Effect */
+.popup-close:hover {
+  color: #ff0000;
+}
+
+/* Image in Popup */
+.popup-image {
+  width: 100%; /* Makes the image responsive */
+  max-width: 200px; /* Adjust max-width as needed */
+  height: auto; /* Maintains aspect ratio */
+  margin-bottom: 20px; /* Adds space below the image */
+  border-radius: 8px; /* Optional: adds rounded corners to the image */
+}
+
+/* Link Styling */
+.popup-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.popup-link:hover {
+  background-color: #0056b3;
+}
+
+
+
+  </style>
+</head>
+<body>
+
+<!-- Popup Modal -->
+<!-- Popup Modal -->
+<div id="popupModal" class="popup-modal" onclick="closePopup(event)">
+  <div class="popup-content">
+    <!-- Close Button (Cross) -->
+    <span class="popup-close" onclick="closePopup()">&times;</span>
+    
+    <!-- Image in Popup -->
+    <img src="c7.jpg" alt="Technology Image" class="popup-image">
+    
+    <h2>We Offer Technology at Minimal Cost!</h2>
+    <p>For more details, click the link below:</p>
+    <!-- Link to PDF -->
+    <a href="Pricing List.pdf" target="_blank" class="popup-link">Check Pricing</a>
+  </div>
+</div>
+
+
+
+  <nav class="navbar bg-body-tertiary fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="redalpha.gif" alt="Logo" width="50" height="50" class="me-2">
+        <span>RedAlpha</span>
+      </a>
+      <button id="nightModeToggle">🌙</button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+            <img src="redalpha.gif" alt="Logo" width="50" height="50" class="me-2"> RedAlpha
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Contact us
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Contact for Websites Development</a></li>
+                <li><a class="dropdown-item" href="#">Contact for Application Development</a></li>
+
+
+                <li><a class="dropdown-item" href="#">Contact for Ui Ux development</a></li>
+                <li><a class="dropdown-item" href="#">Contact for Video & Photo Editing</a></li>
+                <li><a class="dropdown-item" href="#">Contact for Graphics Designing</a></li>
+              </ul>
+              <a class="nav-link" href="#about-us">About-Us</a>
+            </li>
+          </ul>
+          <form class="d-flex mt-3" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+
+   <!-- Hero Section -->
+   <section class="hero-section" onclick="toggleZoom()">
+   
+
+    <video autoplay loop muted class="background-video">
+      <source src="v3.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-background"></div>
+    
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="animated-text">Welcome to RedAlpha Tech </h1>
+      <p class="animated-text">We are here to fullfill your criteria</p>
+      <a href="#services" class="btn btn-light btn-lg">Explore Our Services</a>
+        <!-- Scroll Down Button -->
+  <a href="#about-us" class="scroll-down-btn">
+    <span>&#8595;</span> <!-- Downward arrow icon -->
+  </a>
+    </div>
+  </section>
+  <section id="services" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Our Services</h2>
+      <div class="row">
+        <div class="col-12">
+          <div class="services-container">
+            
+
+            
+            <div class="services-slider">
+              <!-- Card 1: Web Development -->
+              <div class="service-card">
+                <div class="service-image">
+                  <img src="web.jpg" alt="Web Development">
+                  <h4>Web Development</h4>
+                </div>
+                <div class="service-overlay">
+                  <h4>Web Development</h4>
+                  <p>We create stunning and responsive websites to boost your online presence.</p>
+                </div>
+              </div>
+      
+              <!-- Card 2: AI & Machine Learning -->
+              <div class="service-card">
+                <div class="service-image">
+                  <img src="ml.jpg" alt="AI & Machine Learning">
+                  <h4>AI & Machine Learning</h4>
+                </div>
+                <div class="service-overlay">
+                  <h4>AI & Machine Learning</h4>
+                  <p>Advanced AI and ML solutions for a smarter future.</p>
+                </div>
+              </div>
+      
+              <!-- Card 3: App Development -->
+              <div class="service-card">
+                <div class="service-image">
+                  <img src="application.jpg" alt="App Development">
+                  <h4>App Development</h4>
+                </div>
+                <div class="service-overlay">
+                  <h4>App Development</h4>
+                  <p>High-quality mobile applications tailored to your needs.</p>
+                </div>
+              </div>
+      
+              <!-- Card 4: Video and Photo Editing -->
+              <div class="service-card">
+                <div class="service-image">
+                  <img src="video editor.jpg" alt="Video and Photo Editing">
+                  <h4>Video and Photo Editing</h4>
+                </div>
+                <div class="service-overlay">
+                  <h4>Video and Photo Editing</h4>
+                  <p>Professional video and photo editing services for your media needs.</p>
+                </div>
+              </div>
+      
+              <!-- Card 5: Graphics Design -->
+              <div class="service-card">
+                <div class="service-image">
+                  <img src="graphicsdesigner.jpg" alt="Graphics Design">
+                  <h4>Graphics Design</h4>
+                </div>
+                <div class="service-overlay">
+                  <h4>Graphics Design</h4>
+                  <p>Creative graphic design solutions to enhance your brand identity.</p>
+                </div>
+              </div>
+      
+              <!-- Card 6: UI/UX Design -->
+              <div class="service-card">
+                <div class="service-image">
+                  <img src="ui ux.jpg" alt="UI/UX Design">
+                  <h4>UI/UX Design</h4>
+                </div>
+                <div class="service-overlay">
+                  <h4>UI/UX Design</h4>
+                  <p>Exceptional UI/UX design to enhance user experience and engagement.</p>
+                </div>
+              </div>
+      
+              <!-- Card 7: Digital Marketing -->
+              <div class="service-card">
+                <div class="service-image">
+                  <img src="digitalmarketing.jpg" alt="Digital Marketing">
+                  <h4>Digital Marketing</h4>
+                </div>
+                <div class="service-overlay">
+                  <h4>Digital Marketing</h4>
+                  <p>Boost your brand's visibility with effective digital marketing strategies.</p>
+                </div>
+              </div>
+            </div>
+
+          
+          </div>
+        </div>
+        
+          
+      </div>
+      
+    </div>
+ <div>
+
+ </div>
+
+
+  <!-- Button Container -->
+  <div class="button-container">
+    <button class="slider-button" id="prevButton"><i class="fas fa-chevron-left"></i></button>
+<button class="pause-button" id="pauseButton"><i class="fas fa-pause"></i></button>
+<button class="slider-button" id="nextButton"><i class="fas fa-chevron-right"></i></button>
+
+  </div>
+</section>
+
+          </section>
+  <!-- Our Customers Section -->
+<section id="our-customers" class="py-5">
+  <div class="container">
+    <h2 class="section-title text-center mb-5">Our Clients</h2>
+    
+    <!-- Row to hold the customer logos -->
+    <div class="row">
+      <!-- Customer 1 -->
+      <div class="col-6 col-md-2 mb-4">
+        <img src="Meesho_logo.png" alt="Customer 1" class="img-fluid">
+      </div>
+      
+      <!-- Customer 2 -->
+      <div class="col-6 col-md-2 mb-4">
+        <img src="bewakoof.png" alt="Customer 2" class="img-fluid">
+      </div>
+      
+      <!-- Customer 3 -->
+      <div class="col-6 col-md-2 mb-4">
+        <img src="sastabazar.png" alt="Customer 3" class="img-fluid">
+      </div>
+      
+      <!-- Customer 4 -->
+      <div class="col-6 col-md-2 mb-4">
+        <img src="smartcomputers.png" alt="Customer 4" class="img-fluid">
+      </div>
+      
+      <!-- Customer 5 -->
+      <div class="col-6 col-md-2 mb-4">
+        <img src="prime.png" alt="Customer 5" class="img-fluid">
+      </div>
+      
+      <!-- Customer 6 -->
+      <div class="col-6 col-md-2 mb-4">
+        <img src="kingstone.jpg" alt="Customer 6" class="img-fluid">
+      </div>
+      
+      <!-- Customer 7 -->
+      <div class="col-6 col-md-2 mb-4">
+        <img src="momskitchen.jpg" alt="Customer 7" class="img-fluid">
+      </div>
+      
+      <!-- Customer 8 -->
+      <div class="col-6 col-md-2 mb-4">
+        <img src="abacus.jpg" alt="Customer 8" class="img-fluid">
+      </div>
+      
+      <!-- Customer 9 -->
+      <div class="col-6 col-md-2 mb-4">
+        <img src="pateluniversity.png" alt="Customer 9" class="img-fluid">
+      </div>
+      
+      <!-- Customer 10 -->
+      <div class="col-6 col-md-2 mb-4">
+        <img src="dentalhospital.png" alt="Customer 10" class="img-fluid">
+      </div>
+      
+      <!-- Customer 11 -->
+      <div class="col-6 col-md-2 mb-4">
+        <img src="accademy.jpeg" alt="Customer 11" class="img-fluid">
+      </div>
+      
+      <!-- Customer 12 -->
+      <div class="col-6 col-md-2 mb-4">
+        <img src="college.png" alt="Customer 12" class="img-fluid">
+      </div>
+      
+      <!-- Customer 13 -->
+      <div class="col-6 col-md-2 mb-4">
+        <img src="hallreal.jpg" alt="Customer 13" class="img-fluid">
+      </div>
+      
+      <!-- Customer 14 -->
+      <div class="col-6 col-md-2 mb-4">
+        <img src="resturants.png" alt="Customer 14" class="img-fluid">
+      </div>
+      
+      <!-- Customer 15 -->
+      <div class="col-6 col-md-2 mb-4">
+        <img src="starfish.png" alt="Customer 15" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</section>
+<!-- About Us Section -->
+<section id="about-us" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="section-title text-center">About Us</h2>
+    
+    <!-- Horizontal Red Line -->
+    <hr class="red-line">
+
+    <div class="row mt-5">
+      <!-- Left Side: Our Team Section -->
+    <!-- Our Team Section -->
+<div class="col-md-6">
+  <h3>Our Team</h3>
+  <div class="row">
+    <!-- Team Member 1 -->
+    <div class="col-md-6 team-member">
+      <div class="image-container">
+        <img src="soumya1.png" alt="Soumya" class="img-fluid team-member-img zoomable" data-role="Developer">
+      </div>
+      <p>Soumya</p>
+    </div>
+    <!-- Team Member 2 -->
+    <div class="col-md-6 team-member">
+      <div class="image-container">
+        <img src="biplab1.png" alt="Biplab" class="img-fluid team-member-img zoomable" data-role="Designer">
+      </div>
+      <p>Biplab</p>
+    </div>
+    <!-- Team Member 3 -->
+    <div class="col-md-6 team-member">
+      <div class="image-container">
+        <img src="Subhojit1.png" alt="Subhojit" class="img-fluid team-member-img zoomable" data-role="Backend Developer">
+      </div>
+      <p>Subhojit</p>
+    </div>
+    <!-- Team Member 4 -->
+    <div class="col-md-6 team-member">
+      <div class="image-container">
+        <img src="arijit1.png" alt="Arijit" class="img-fluid team-member-img zoomable" data-role="Frontend Developer">
+      </div>
+      <p>Arijit</p>
+    </div>
+    <!-- Team Member 5 -->
+    <div class="col-md-6 team-member">
+      <div class="image-container">
+        <img src="shovandev1.png" alt="Shovandev" class="img-fluid team-member-img zoomable" data-role="Project Manager">
+      </div>
+      <p>Shovandev</p>
+    </div>
+    <!-- Team Member 6 -->
+    <div class="col-md-6 team-member">
+      <div class="image-container">
+        <img src="Puskar1.png" alt="Puskar" class="img-fluid team-member-img zoomable" data-role="Tester">
+      </div>
+      <p>Puskar</p>
+    </div>
+  </div>
+</div>
+
+
+      <!-- Right Side: Content Section -->
+
+        <div class="col-md-6">
+          <h3>About Our Startup</h3>
+          <p>We are a passionate startup company focused on providing high-quality digital solutions at minimal costs. Our aim is to help businesses of all sizes embrace the digital age through innovative services like web development, mobile app development, and custom software solutions. We believe that great technology doesn't have to come with a high price tag, and we're committed to offering cost-effective solutions that drive growth and success for our clients.</p>
+          <p>Our team of experts works closely with clients to deliver personalized services that meet their specific needs. Whether you're a startup looking for your first website or a large organization seeking a scalable app, we have the experience and skills to make your ideas come to life.</p>
+          <p>At our core, we are dedicated to providing excellent customer service, delivering timely results, and building long-term relationships with our clients.</p>
+        </div>
+    </div>
+  </div>
+</section>
+
+
+
+ 
+  <!-- Footer -->
+<footer class="footer py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Contact Us</h5>
+          <p>Feel free to reach out to us for any project inquiries or collaborations.</p>
+          <p>Email: techredalpha@gmail.com | Phone: +919474177925</p>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="col-md-6">
+          <h5>Send Us a Message</h5>
+          <form action="#" method="post">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" class="form-control" id="subject" name="subject" required>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+  <p>&copy; 2024 Redalpha. All Rights Reserved.</p>
+
+  </footer>
+  
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- JavaScript for Zoom Effect Toggle -->
+    <script>
+      function toggleZoom() {
+        document.querySelector('.hero-section').classList.toggle('zoomed');
+      }
+      let slider = document.querySelector('.services-slider');
+let cards = Array.from(document.querySelectorAll('.service-card'));
+let currentIndex = 0;
+let slideInterval;
+let cardWidth = cards[0].offsetWidth;
+
+// Check if in mobile view
+function isMobileView() {
+    return window.innerWidth <= 767;
+}
+
+// Function to set up clones only as needed for smooth transitions
+function setupClones() {
+    // Clear existing clones to reset
+    slider.innerHTML = '';
+    cards.forEach(card => slider.appendChild(card));
+
+    if (isMobileView()) {
+        // On mobile, add only one clone of the first and last cards for seamless looping
+        slider.appendChild(cards[0].cloneNode(true));
+        slider.insertBefore(cards[cards.length - 1].cloneNode(true), cards[0]);
+    } else {
+        // For desktop, add multiple clones as initially done
+        cards.slice(0, 7).forEach(card => slider.appendChild(card.cloneNode(true)));
+        cards.slice(-7).reverse().forEach(card => slider.insertBefore(card.cloneNode(true), cards[0]));
+    }
+
+    // Recalculate cardWidth after adjusting clones
+    cardWidth = cards[0].offsetWidth + (isMobileView() ? 0 : 40); 
+    slider.style.transform = `translateX(-${(isMobileView() ? cardWidth : cardWidth * 7)}px)`;
+    currentIndex = 0;
+}
+
+// Move slides with smooth looping logic
+function moveSlide(direction) {
+    currentIndex += direction;
+    slider.style.transition = 'transform 0.5s ease';
+    slider.style.transform = `translateX(-${(currentIndex + (isMobileView() ? 1 : 7)) * cardWidth}px)`;
+
+    slider.addEventListener('transitionend', () => {
+        // Handle looping based on view
+        if (isMobileView() && (currentIndex >= cards.length || currentIndex < 0)) {
+            currentIndex = currentIndex >= cards.length ? 0 : cards.length - 1;
+            slider.style.transition = 'none';
+            slider.style.transform = `translateX(-${cardWidth}px)`;
+        } else if (!isMobileView() && (currentIndex >= cards.length || currentIndex < 0)) {
+            currentIndex = currentIndex >= cards.length ? 0 : cards.length - 7;
+            slider.style.transition = 'none';
+            slider.style.transform = `translateX(-${(currentIndex + 7) * cardWidth}px)`;
+        }
+    }, { once: true });
+}
+
+// Start the slider with appropriate interval for mobile/desktop
+function startSlider() {
+    const intervalTime = isMobileView() ? 2000 : 5000;
+    slideInterval = setInterval(() => moveSlide(1), intervalTime);
+}
+
+// Initial setup and event listeners for responsiveness
+window.addEventListener('resize', () => {
+    clearInterval(slideInterval); // Clear existing interval
+    setupClones(); // Set up clones again based on new screen size
+    startSlider(); // Restart slider with new settings
+});
+
+setupClones(); // Initial setup of clones
+startSlider(); // Start sliding
+
+
+// Recalculate card width on window resize for responsiveness
+window.addEventListener('resize', recalculateCardWidth);
+
+function recalculateCardWidth() {
+    cardWidth = cards[0].offsetWidth + (isMobileView() ? 0 : 40);
+    setupClones();
+}
+
+
+
+// Recalculate card width on window resize for responsiveness
+window.addEventListener('resize', recalculateCardWidth);
+
+document.addEventListener('DOMContentLoaded', function() {
+  const images = document.querySelectorAll('.zoomable');
+
+  images.forEach(image => {
+    image.addEventListener('click', () => {
+      // Create zoom overlay and image
+      const overlay = document.createElement('div');
+      overlay.classList.add('zoom-overlay');
+      
+      const zoomedImage = document.createElement('img');
+      zoomedImage.src = image.src;
+
+      // Create the role container with data-role attribute
+      const roleContainer = document.createElement('div');
+      roleContainer.classList.add('role-container');
+      roleContainer.innerHTML = image.getAttribute('data-role');  // Role comes from data-role attribute
+
+      overlay.appendChild(zoomedImage);
+      overlay.appendChild(roleContainer);
+      
+      document.body.appendChild(overlay);
+
+      // Open the overlay with animation
+      setTimeout(() => overlay.classList.add('open'), 10);
+
+      // Close the overlay when clicked
+      overlay.addEventListener('click', () => {
+        overlay.classList.remove('open');
+        setTimeout(() => overlay.remove(), 300);  // Delay for closing animation
+      });
+    });
+  });
+});
+
+// Function to open the modal when the page loads
+window.onload = function() {
+  openPopup();
+};
+
+// Function to open the popup modal
+function openPopup() {
+  document.getElementById('popupModal').style.display = 'flex';
+}
+
+// Function to close the popup modal
+function closePopup(event) {
+  // Check if the click happened outside of the modal content (the card)
+  if (event && event.target === document.getElementById('popupModal')) {
+    document.getElementById('popupModal').style.display = 'none';
+  } else if (!event) {
+    document.getElementById('popupModal').style.display = 'none';
+  }
+}
+
+
+function isMobileView() {
+    return window.innerWidth <= 767;
+}
+
+function setupSlider() {
+    slider.style.transition = 'none'; // Disable transition initially
+    currentIndex = 0; // Reset index
+
+    if (isMobileView()) {
+        slider.style.transform = `translateX(0)`; // Reset to the start for mobile
+    } else {
+        const cardWidth = cards[0].offsetWidth + 40;
+        slider.style.transform = `translateX(-${cardWidth * 7}px)`; // Offset for desktop
+    }
+}
+
+function moveSlide(direction) {
+    if (isMobileView()) {
+        // Only scroll to next element for mobile
+        currentIndex = (currentIndex + direction + cards.length) % cards.length;
+        slider.scrollTo({
+            left: currentIndex * slider.offsetWidth,
+            behavior: 'smooth'
+        });
+    } else {
+        // Desktop logic remains as before
+        const cardWidth = cards[0].offsetWidth + 40;
+        currentIndex += direction;
+        slider.style.transition = 'transform 0.5s ease';
+        slider.style.transform = `translateX(-${(currentIndex + 7) * cardWidth}px)`;
+
+        // Reset if at end
+        slider.addEventListener('transitionend', () => {
+            if (currentIndex >= cards.length) {
+                currentIndex = 0;
+                slider.style.transition = 'none';
+                slider.style.transform = `translateX(-${cardWidth * 7}px)`;
+            } else if (currentIndex < 0) {
+                currentIndex = cards.length - 7;
+                slider.style.transition = 'none';
+                slider.style.transform = `translateX(-${(cards.length) * cardWidth}px)`;
+            }
+        }, { once: true });
+    }
+}
+
+function startSlider() {
+    const intervalTime = isMobileView() ? 2000 : 5000;
+    slideInterval = setInterval(() => moveSlide(1), intervalTime);
+}
+
+window.addEventListener('resize', () => {
+    clearInterval(slideInterval);
+    setupSlider();
+    startSlider();
+});
+
+// Initial setup and start
+setupSlider();
+startSlider();
+// Pause and resume slider functionality
+let isPaused = false;
+function pauseSlider() {
+    isPaused = !isPaused;
+
+    if (isPaused) {
+        clearInterval(slideInterval); // Pause the slider by clearing the interval
+        pauseButton.innerHTML = '<i class="fas fa-play"></i>'; // Show play icon
+    } else {
+        startSlider(); // Resume the slider
+        pauseButton.innerHTML = '<i class="fas fa-pause"></i>'; // Show pause icon
+    }
+}
+
+// Start the auto-slide function
+function startSlider() {
+    // Clear any existing interval before setting a new one
+    clearInterval(slideInterval);
+    slideInterval = setInterval(() => {
+        if (!isPaused) {
+            moveSlide(1);
+        }
+    }, 5000); // Set your desired interval time here
+}
+
+// Button event listeners for previous, next, and pause
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
+const pauseButton = document.getElementById('pauseButton');
+
+prevButton.addEventListener('click', () => {
+    clearInterval(slideInterval); // Clear interval to prevent auto-slide interference
+    moveSlide(-1);
+    startSlider(); // Restart the interval after manual slide
+});
+
+nextButton.addEventListener('click', () => {
+    clearInterval(slideInterval); // Clear interval to prevent auto-slide interference
+    moveSlide(1);
+    startSlider(); // Restart the interval after manual slide
+});
+
+pauseButton.addEventListener('click', pauseSlider);
+
+// Start the slider initially
+startSlider();
+// Get the night mode toggle button
+const nightModeToggle = document.getElementById('nightModeToggle');
+
+// Check if the user has previously set their theme preference
+const savedTheme = localStorage.getItem('theme');
+
+// Apply saved theme if it exists
+if (savedTheme === 'night') {
+    document.body.classList.add('night-mode');
+    document.querySelector('.navbar').classList.add('night-mode');
+    nightModeToggle.textContent = '🌞'; // Show sun icon for Day Mode
+} else {
+    document.body.classList.remove('night-mode');
+    document.querySelector('.navbar').classList.remove('night-mode');
+    nightModeToggle.textContent = '🌙'; // Show moon icon for Night Mode
+}
+
+// Toggle night mode on button click
+nightModeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('night-mode');
+    document.querySelector('.navbar').classList.toggle('night-mode');
+    
+    // Change the button symbol based on the mode
+    if (document.body.classList.contains('night-mode')) {
+        nightModeToggle.textContent = '🌞'; // Switch to Day Mode icon
+        localStorage.setItem('theme', 'night'); // Save night mode in local storage
+    } else {
+        nightModeToggle.textContent = '🌙'; // Switch to Night Mode icon
+        localStorage.setItem('theme', 'day'); // Save day mode in local storage
+    }
+});
+    </script>
+
+      
+
+</body>
+</html>
