@@ -213,7 +213,7 @@
     @keyframes slide {
       0% { background-image: url('c1.jpg'); }
   
-      53% { background-image: url('c2.jpg'); }
+      33% { background-image: url('c2.jpg'); }
       63% { background-image: url('c8.jpg'); }
       76% { background-image: url('c3.jpg'); }
 
@@ -615,6 +615,47 @@
   border-right: 10px solid transparent;
   border-top: 20px solid #333; /* Triangle pointing down */
 }
+/* Responsive Design for Zoomable Images */
+@media (max-width: 768px) {
+  .image-container {
+    width: 120px; /* Smaller image size for tablets */
+    height: 120px;
+  }
+
+  .zoom-overlay img {
+    max-width: 90%; /* Slightly smaller zoomed image */
+    max-height: 70%; /* Ensure it fits within the screen height */
+  }
+
+  .zoom-overlay .role-container {
+    font-size: 18px; /* Adjust role text size */
+  }
+}
+
+@media (max-width: 576px) {
+  .image-container {
+    width: 100px; /* Smaller image size for mobile */
+    height: 100px;
+  }
+
+  .zoom-overlay img {
+    max-width: 95%; /* Maximize image display on mobile */
+    max-height: 60%;
+  }
+
+  .zoom-overlay .role-container {
+    font-size: 16px; /* Reduce text size for better readability */
+    bottom: 10px; /* Adjust spacing to fit smaller screens */
+  }
+
+  .zoom-overlay .role-container:after {
+    bottom: -15px; /* Reduce triangle distance for smaller screens */
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 15px solid #333; /* Smaller triangle */
+  }
+}
+
 /*====================================*/
 /* Popup Modal - Background */
 .popup-modal {
@@ -624,24 +665,25 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-  z-index: 1000; /* Make sure it sits above other content */
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  z-index: 1000;
   justify-content: center;
   align-items: center;
+  margin-top:62px;
 }
 
 /* Popup Modal - Content */
 .popup-content {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.8); /* Transparent effect */
   border-radius: 10px;
   padding: 30px;
   text-align: center;
-  width: 300px; /* Adjust the width of the modal */
+  width: 326px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   position: relative;
 }
 
-/* Close Button (Cross) */
+/* Close Button */
 .popup-close {
   position: absolute;
   top: 10px;
@@ -649,28 +691,22 @@
   font-size: 30px;
   color: #333;
   cursor: pointer;
-  background-color: transparent;
-  border: none;
-}
-
-/* Close Button Hover Effect */
-.popup-close:hover {
-  color: #ff0000;
 }
 
 /* Image in Popup */
 .popup-image {
-  width: 100%; /* Makes the image responsive */
-  max-width: 200px; /* Adjust max-width as needed */
-  height: auto; /* Maintains aspect ratio */
-  margin-bottom: 20px; /* Adds space below the image */
-  border-radius: 8px; /* Optional: adds rounded corners to the image */
+  width: 101%;
+  max-width: 206px;
+  height: 111px;
+  margin-bottom: -2px;
+  border-radius: 8px;
+
 }
 
 /* Link Styling */
 .popup-link {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: -31px;
   padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
@@ -682,17 +718,339 @@
   background-color: #0056b3;
 }
 
+/* Input Group Styling */
+.input-group {
+  margin-top: 4px;
+}
+
+.input-field {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.send-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  background-color: rgba(40, 167, 69, 0.8); /* Transparent button */
+}
+
+.send-button:hover {
+  background-color: #218838;
+}
+
+
+/*==============================================*/
+.cta {
+  display: flex;
+  padding: 11px 33px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  background: #6225e6;
+  transition: 1s;
+  box-shadow: 6px 6px 0 black;
+  transform: skewX(-15deg);
+  border: none;
+  cursor: pointer;
+  margin-left: 200px;
+  align-items: center; /* Ensure vertical alignment of the content */
+  justify-content: center; /* Center content horizontally */
+}
+
+/* Focus state: Remove outline */
+.cta:focus {
+  outline: none;
+}
+
+/* Hover effect */
+.cta:hover {
+  transition: 0.5s;
+  box-shadow: 10px 10px 0 #fb3838;
+}
+
+.cta .second {
+  transition: 0.5s;
+  margin-right: 0px;
+}
+
+.cta:hover .second {
+  transition: 0.5s;
+  margin-right: 45px;
+}
+
+.span {
+  transform: skewX(15deg);
+}
+
+.second {
+  width: 20px;
+  margin-left: 30px;
+  position: relative;
+  top: 12%;
+}
+
+.one {
+  transition: 0.4s;
+  transform: translateX(-60%);
+}
+
+.two {
+  transition: 0.5s;
+  transform: translateX(-30%);
+}
+
+.cta:hover .three {
+  animation: color_anim 1s infinite 0.2s;
+}
+
+.cta:hover .one {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.6s;
+}
+
+.cta:hover .two {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.4s;
+}
+
+@keyframes color_anim {
+  0% {
+    fill: white;
+  }
+  50% {
+    fill: #fd0909;
+  }
+  100% {
+    fill: white;
+  }
+}
+
+
+/* Mobile responsiveness using media queries */
+@media screen and (max-width: 768px) {
+  .cta {
+    font-size: 18px; /* Decrease font size for mobile */
+    padding: 8px 20px; /* Reduce padding for a smaller button */
+    margin-left: 0; /* Remove left margin for centering */
+    width: auto; /* Ensure the button adjusts to content width */
+    box-shadow: 4px 4px 0 black; /* Smaller box-shadow */
+    transform: none; /* Remove skew effect */
+    justify-content: center; /* Center the content horizontally */
+    margin-left:124px;
+  }
+
+  .cta .second {
+    width: 15px; /* Reduce the size of the second element */
+    margin-left: 15px; /* Adjust margin */
+  }
+
+  .cta .one,
+  .cta .two {
+    transform: translateX(0%); /* Remove the initial translateX for mobile */
+  }
+
+  /* Adjust the hover animations */
+  .cta:hover .three {
+    animation: color_anim 1s infinite 0.3s;
+  }
+
+  .cta:hover .one,
+  .cta:hover .two {
+    animation: color_anim 1s infinite 0.5s;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cta {
+    font-size: 16px; /* Further reduce the font size */
+    padding: 6px 15px; /* Adjust padding to make the button smaller */
+  }
+
+  .cta .second {
+    width: 12px; /* Reduce the size of the second element */
+    margin-left: 10px; /* Adjust margin */
+  }
+
+  .cta .one,
+  .cta .two {
+    transform: translateX(0%); /* Ensure there's no initial movement */
+  }
+
+  .cta:hover .three {
+    animation: color_anim 1s infinite 0.4s;
+  }
+
+  .cta:hover .one,
+  .cta:hover .two {
+    animation: color_anim 1s infinite 0.6s;
+  }
+}
+/*==================================================*/
+
+.btn6 {
+  --color: #f5e50c;
+  --color2: rgb(10, 25, 30);
+  padding: 0.8em 1.75em;
+  background-color: transparent;
+  border-radius: 6px;
+  border: .3px solid var(--color);
+  transition: .5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 300;
+  font-size: 17px;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  color: var(--color);
+ }
+ 
+ .btn6::after, .btn6::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: .5s ease-out;
+  background-color: var(--color);
+ }
+ 
+ .btn6::before {
+  top: -50%;
+  left: -25%;
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+ }
+ 
+ .btn6:hover::before {
+  transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+ }
+ 
+ .btn6:hover::after {
+  transform: skew(45deg) translate(-50%, -50%);
+ }
+ 
+ .btn6:hover {
+  color: var(--color2);
+ }
+ 
+ .btn6:active {
+  filter: brightness(.7);
+  transform: scale(.98);
+ }
+ /*=================================*/
+ /* From Uiverse.io by DavidTM96 */ 
+.form {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  font-family: inherit;
+  gap: 10px;
+  padding-inline: 2em;
+  padding-bottom: 0.4em;
+
+background-color: #f85050;
+  border-radius: 20px;
+}
+
+.form-heading {
+  text-align: center;
+  
+  color: #f7f7f7;
+  font-size: 2em;
+  background-color: transparent;
+  align-self: center;
+}
+
+.form-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border-radius: 10px;
+  padding: 0.6em;
+  border: none;
+  outline: none;
+  color: rgb(6, 5, 5);
+  background-color: #892626;
+  box-shadow: inset 2px 5px 10px rgb(253, 22, 22);
+}
+
+.input-field {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #060708;
+  padding-inline: 1em;
+}
+
+.sendMessage-btn {
+  cursor: pointer;
+  margin-bottom: 3em;
+  padding: 1em;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #fe0202;
+  font-weight: bold;
+  outline: 1px solid #ff0404;
+  transition: all ease-in-out 0.3s;
+}
+
+.sendMessage-btn:hover {
+  transition: all ease-in-out 0.3s;
+  background-color: #a00606;
+  color: #000;
+  cursor: pointer;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+
+.form-card1 {
+  background-image: linear-gradient(163deg, #fa0505 0%, #fd1a1a 100%);
+  border-radius: 22px;
+  transition: all 0.3s;
+}
+
+.form-card1:hover {
+  box-shadow: 0px 0px 30px 1px rgba(242, 2, 2, 0.3);
+}
+
+.form-card2 {
+  border-radius: 0;
+  transition: all 0.2s;
+}
+
+.form-card2:hover {
+  transform: scale(0.98);
+  border-radius: 20px;
+}
 
 
   </style>
 </head>
 <body>
-
+  
 <!-- Popup Modal -->
 <!-- Popup Modal -->
 <div id="popupModal" class="popup-modal" onclick="closePopup(event)">
   <div class="popup-content">
-    <!-- Close Button (Cross) -->
+    <!-- Close Button -->
     <span class="popup-close" onclick="closePopup()">&times;</span>
     
     <!-- Image in Popup -->
@@ -702,6 +1060,13 @@
     <p>For more details, click the link below:</p>
     <!-- Link to PDF -->
     <a href="Pricing List.pdf" target="_blank" class="popup-link">Check Pricing</a>
+    
+    <!-- Message and Contact Form -->
+    <div class="input-group">
+      <input type="text" placeholder="Enter your message" class="input-field">
+      <input type="text" placeholder="Enter your contact number" class="input-field">
+      <button class="send-button">Send</button>
+    </div>
   </div>
 </div>
 
@@ -737,16 +1102,21 @@
                 Contact us
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Contact for Websites Development</a></li>
-                <li><a class="dropdown-item" href="#">Contact for Application Development</a></li>
+                <li><a class="dropdown-item" href="web.html">Contact for Websites Development</a></li>
+                <li><a class="dropdown-item" href="app.html">Contact for Application Development</a></li>
 
 
-                <li><a class="dropdown-item" href="#">Contact for Ui Ux development</a></li>
-                <li><a class="dropdown-item" href="#">Contact for Video & Photo Editing</a></li>
-                <li><a class="dropdown-item" href="#">Contact for Graphics Designing</a></li>
+                <li><a class="dropdown-item" href="uiux.html">Contact for Ui Ux development</a></li>
+                <li><a class="dropdown-item" href="photo.html">Contact for Video & Photo Editing</a></li>
+                <li><a class="dropdown-item" href="graphics.html">Contact for Graphics Designing</a></li>
               </ul>
-              <a class="nav-link" href="#about-us">About-Us</a>
-            </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  About-Us
+                </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Blog</a></li>
+                <li><a class="dropdown-item" href="#about-us">Developers</a></li>
           </ul>
           <form class="d-flex mt-3" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -772,7 +1142,45 @@
     <div class="hero-content">
       <h1 class="animated-text">Welcome to RedAlpha Tech </h1>
       <p class="animated-text">We are here to fullfill your criteria</p>
-      <a href="#services" class="btn btn-light btn-lg">Explore Our Services</a>
+<button class="cta" onclick="location.href='#services'">
+  
+  <span class="span">Explore</span>
+  <span class="second">
+    <svg
+      width="50px"
+      height="20px"
+      viewBox="0 0 66 43"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <g
+        id="arrow"
+        stroke="none"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <path
+          class="one"
+          d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z"
+          fill="#FFFFFF"
+        ></path>
+        <path
+          class="two"
+          d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z"
+          fill="#FFFFFF"
+        ></path>
+        <path
+          class="three"
+          d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z"
+          fill="#FFFFFF"
+        ></path>
+      </g>
+    </svg>
+  </span>
+</button>
+
         <!-- Scroll Down Button -->
   <a href="#about-us" class="scroll-down-btn">
     <span>&#8595;</span> <!-- Downward arrow icon -->
@@ -798,6 +1206,11 @@
                 <div class="service-overlay">
                   <h4>Web Development</h4>
                   <p>We create stunning and responsive websites to boost your online presence.</p>
+
+                  <a href="web.html">
+                    <button class="btn6">Learn More</button>
+                  </a>
+                  
                 </div>
               </div>
       
@@ -810,6 +1223,10 @@
                 <div class="service-overlay">
                   <h4>AI & Machine Learning</h4>
                   <p>Advanced AI and ML solutions for a smarter future.</p>
+                  <a href="index.html">
+                    <button class="btn6">Learn More</button>
+                  </a>
+                  
                 </div>
               </div>
       
@@ -822,6 +1239,10 @@
                 <div class="service-overlay">
                   <h4>App Development</h4>
                   <p>High-quality mobile applications tailored to your needs.</p>
+                  <a href="app.html">
+                    <button class="btn6">Learn More</button>
+                  </a>
+                  
                 </div>
               </div>
       
@@ -834,6 +1255,10 @@
                 <div class="service-overlay">
                   <h4>Video and Photo Editing</h4>
                   <p>Professional video and photo editing services for your media needs.</p>
+                  <a href="photo.html">
+                    <button class="btn6">Learn More</button>
+                  </a>
+                  
                 </div>
               </div>
       
@@ -846,6 +1271,10 @@
                 <div class="service-overlay">
                   <h4>Graphics Design</h4>
                   <p>Creative graphic design solutions to enhance your brand identity.</p>
+                  <a href="graphics.html">
+                    <button class="btn6">Learn More</button>
+                  </a>
+                  
                 </div>
               </div>
       
@@ -858,6 +1287,10 @@
                 <div class="service-overlay">
                   <h4>UI/UX Design</h4>
                   <p>Exceptional UI/UX design to enhance user experience and engagement.</p>
+                  <a href="uiux.html">
+                    <button class="btn6">Learn More</button>
+                  </a>
+                  
                 </div>
               </div>
       
@@ -870,6 +1303,10 @@
                 <div class="service-overlay">
                   <h4>Digital Marketing</h4>
                   <p>Boost your brand's visibility with effective digital marketing strategies.</p>
+                  <a href="index.html">
+                    <button class="btn6">Learn More</button>
+                  </a>
+                  
                 </div>
               </div>
             </div>
@@ -900,19 +1337,11 @@
   <!-- Our Customers Section -->
 <section id="our-customers" class="py-5">
   <div class="container">
-    <h2 class="section-title text-center mb-5">Our Clients</h2>
+    <h2 class="section-title text-center mb-5">Our WorkSpace</h2>
     
     <!-- Row to hold the customer logos -->
     <div class="row">
-      <!-- Customer 1 -->
-      <div class="col-6 col-md-2 mb-4">
-        <img src="Meesho_logo.png" alt="Customer 1" class="img-fluid">
-      </div>
-      
-      <!-- Customer 2 -->
-      <div class="col-6 col-md-2 mb-4">
-        <img src="bewakoof.png" alt="Customer 2" class="img-fluid">
-      </div>
+     
       
       <!-- Customer 3 -->
       <div class="col-6 col-md-2 mb-4">
@@ -1063,33 +1492,55 @@
         <div class="col-md-6">
           <h5>Contact Us</h5>
           <p>Feel free to reach out to us for any project inquiries or collaborations.</p>
-          <p>Email: techredalpha@gmail.com | Phone: +919474177925</p>
+          <p>Email: techredalpha@gmail.com | Phone: +91 6296520890</p>
         </div>
         
         <!-- Contact Form -->
         <div class="col-md-6">
-          <h5>Send Us a Message</h5>
-          <form action="#" method="post">
-            <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="name" name="name" required>
+          
+         
+          <div class="form-card1">
+            <div class="form-card2">
+              <form class="form">
+                <p class="form-heading">Send Us A Message</p>
+          
+                <div class="form-field">
+                  <input required="" placeholder="Name" class="input-field" type="text" />
+                </div>
+          
+                <div class="form-field">
+                  <input
+                    required=""
+                    placeholder="Email"
+                    class="input-field"
+                    type="email"
+                  />
+                </div>
+          
+                <div class="form-field">
+                  <input
+                    required=""
+                    placeholder="Subject"
+                    class="input-field"
+                    type="text"
+                  />
+                </div>
+          
+                <div class="form-field">
+                  <textarea
+                    required=""
+                    placeholder="Message"
+                    cols="30"
+                    rows="3"
+                    class="input-field"
+                  ></textarea>
+                </div>
+          
+                <button class="sendMessage-btn">Send Message</button>
+              </form>
             </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="mb-3">
-              <label for="subject" class="form-label">Subject</label>
-              <input type="text" class="form-control" id="subject" name="subject" required>
-            </div>
-            <div class="mb-3">
-              <label for="message" class="form-label">Message</label>
-              <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
+          </div>
+          
     </div>
     <!-- Footer -->
   <p>&copy; 2024 Redalpha. All Rights Reserved.</p>
@@ -1380,6 +1831,8 @@ nightModeToggle.addEventListener('click', () => {
         localStorage.setItem('theme', 'day'); // Save day mode in local storage
     }
 });
+
+
     </script>
 
       
